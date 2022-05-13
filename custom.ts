@@ -2,7 +2,7 @@
  * Minecraft:bit Custom blocks
  */
 //% weight=100 color=#0fbc11 icon=""
-namespace serialEvent {
+namespace Minecraftbit {
     let isConnected: boolean = false;
     let recvTxt = ""
 
