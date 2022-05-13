@@ -5,6 +5,8 @@
 教育版マインクラフトのWebSocket機能から外部WebSocketサーバに接続し、micro:bitと連携できる機能です。
 本プロジェクトはMinecraft:bitから通知されるマインクラフト内イベントを受け取るためのカスタムブロックを追加する拡張機能です。
 
+![イメージ画像](https://raw.githubusercontent.com/naominix/Minecraftbit/master/icon.png)
+
 > このページを開く [https://naominix.github.io/minecraftbit/](https://naominix.github.io/minecraftbit/)
 
 ## 拡張機能として使用
