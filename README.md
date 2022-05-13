@@ -1,9 +1,15 @@
+# Minecraft:bit
+## about Minecraft:bit
+This function allows you to connect to an external WebSocket server from the WebSocket function of the educational version of Minecraft to work with the micro:bit.
+This project is an extension to add a custom block to receive events within Minecraft that are notified by the Minecraft:bit.
+
+![Title](https://raw.githubusercontent.com/naominix/Minecraftbit/master/icon.png)
 
 > このページを開く [https://naominix.github.io/minecraftbit/](https://naominix.github.io/minecraftbit/)
 
-## 拡張機能として使用
+## Used as an extension
 
-このリポジトリは、MakeCode で **拡張機能** として追加できます。
+This repository can be added as an **extension** in MakeCode.
 
 * [https://makecode.microbit.org/](https://makecode.microbit.org/) を開く
 * **新しいプロジェクト** をクリックしてください
