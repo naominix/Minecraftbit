@@ -29,7 +29,6 @@ namespace Minecraftbit {
     //% command.defl="/tp ~~~"
     export function sendMCCommand(command: string): void {
         serial.writeLine(command)
-        basic.pause(10)
     }
 
     /**
