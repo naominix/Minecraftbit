@@ -1,5 +1,8 @@
 /**
  * Minecraft:bit Custom blocks
+ * Require : Minecraft:bit WebSocket Server
+ * 
+ * Hisashi Hoshino
  */
 //% weight=100 color=#0fbc11 icon="\uf1b3"
 namespace Minecraftbit {
