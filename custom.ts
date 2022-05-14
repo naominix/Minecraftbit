@@ -1,7 +1,7 @@
 /**
  * Minecraft:bit Custom blocks
  */
-//% weight=100 color=#0fbc11 icon=""
+//% weight=100 color=#0fbc11 icon="\uf1b3"
 namespace Minecraftbit {
     let isConnected: boolean = false;
     let recvTxt = ""
@@ -9,7 +9,7 @@ namespace Minecraftbit {
     /**
      * Connect Minecraft:bit via USB-Serial
      */
-    //% blockId="mcbit_connect" block="connect to Minecraft:bit"
+    //% blockId="mcbit_connect" block="Minecraft:bitに接続"
     //% weight=100 color=#000080 blockGap=20
     export function connect(): void {
         serial.redirectToUSB()
@@ -21,11 +21,12 @@ namespace Minecraftbit {
     /**
          * Write USB-Serial
          */
-    //% blockId="serial_write" block="Write to USB-Serial"
+    //% blockId="serial_write" block="マイクラコマンド %command を送信"
     //% weight=100 blockGap=20
-    export function Write(): void {
-        // serial.writeLine("custom block")
-        basic.pause(100)
+    //% command.defl="/tp ~~~"
+    export function sendMCCommand(command: string): void {
+        serial.writeLine(command)
+        basic.pause(10)
     }
 
     /**

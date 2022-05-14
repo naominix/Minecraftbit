@@ -5,7 +5,7 @@ Minecraftbit.onItemDropped(function () {
 	
 })
 Minecraftbit.onBlockBroken(function () {
-	
+    Minecraftbit.sendMCCommand("/tp ~~~")
 })
 Minecraftbit.onTravelled(function () {
 	
