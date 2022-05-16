@@ -4,6 +4,43 @@
  * 
  * Hisashi Hoshino
  */
+
+enum ChoiceCommand {
+    //% block="tp"
+    tp,
+    //% block="give"
+    give,
+    //% block="execute"
+    execute,
+    //% block="summon"
+    summon,
+    //% block="effect"
+    effect,
+    //% block="fill"
+    fill,
+    //% block="playsound"
+    playsound,
+    //% block="weather"
+    weather,
+    //% block="time"
+    time
+}
+
+enum Target {
+    //% block="@aすべてのプレイヤー"
+    "a",
+    //% block="@c自分のエージェント"
+    "c",
+    //% block="@eすべてのエンティティ"
+    "e",
+    //% block="@p最も近いプレイヤー"
+    "p",
+    //% block="@rランダムなプレイヤー"
+    "r",
+    //% block="@s自分自身"
+    "s"
+}
+
 //% weight=100 color=#0fbc11 icon="\uf1b3"
 namespace Minecraftbit {
     let isConnected: boolean = false;
@@ -115,8 +152,64 @@ namespace Minecraftbit {
             default:
 
         }
-        basic.pause(50);
+        basic.pause(5);
     })
 
+    /**
+     * Run Minecraft Command.
+     * @param ChoiceCommand options
+     */
+    //% blockId=run_mccommand block="⛏️マイクラコマンド実行 %ChoiceCommand | %options"
+    //% weight=80
+    export function Run_mccommand(choice: ChoiceCommand, options: string):void {
+        let command = "/" + choice + " " + options
+        sendMCCommand(command)
+    }
 
+    /**
+     * Generate Relative coordinates
+     * @param ChoiceCommand options
+     */
+    //% blockId=Rcoordinates block="⛏️相対座標 ~%rx | ~%ry | ~%rz"
+    //% weight=80
+    //% draggableParameters
+    export function setRXYZ(rx: number, ry: number, rz: number):string {
+        let RXYZ = "~" + rx + " " + "~" + ry + " " + "~" + rz + " "
+        return RXYZ
+    }
+
+    /**
+     * Command Target
+     * @param Target
+     */
+    //% blockId=TargetBlock block="⛏️実行対象 %Target"
+    //% weight=80
+    //% draggableParameters
+    export function setTarget(target: Target):string {
+        let targetStr: string = ""
+        switch (target) {
+            case Target.a:
+                targetStr = " @a "
+                return targetStr;
+                break
+            case Target.c:
+                targetStr = " @c "
+                return targetStr;
+            case Target.e:
+                targetStr = " @e "
+                return targetStr;
+            case Target.p:
+                targetStr = " @p "
+                return targetStr;
+            case Target.r:
+                targetStr = " @r "
+                return targetStr;
+            case Target.s:
+                targetStr = " @s "
+                return targetStr;
+            default:
+                targetStr = " @s "
+                return targetStr;
+        }
+    }
 }
