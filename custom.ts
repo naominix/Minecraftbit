@@ -7,38 +7,38 @@
 
 enum ChoiceCommand {
     //% block="tp"
-    tp,
+    tp = 1,
     //% block="give"
-    give,
+    give = 2,
     //% block="execute"
-    execute,
+    execute = 3,
     //% block="summon"
-    summon,
+    summon = 4,
     //% block="effect"
-    effect,
+    effect = 5,
     //% block="fill"
-    fill,
+    fill = 6,
     //% block="playsound"
-    playsound,
+    playsound = 7,
     //% block="weather"
-    weather,
+    weather = 8,
     //% block="time"
-    time
+    time = 9
 }
 
 enum Target {
-    //% block="@aすべてのプレイヤー"
-    "a",
-    //% block="@c自分のエージェント"
-    "c",
-    //% block="@eすべてのエンティティ"
-    "e",
-    //% block="@p最も近いプレイヤー"
-    "p",
-    //% block="@rランダムなプレイヤー"
-    "r",
-    //% block="@s自分自身"
-    "s"
+    //% block="すべてのプレイヤー@a"
+    a = 1,
+    //% block="自分のエージェント@c"
+    c = 2,
+    //% block="すべてのエンティティ@e"
+    e = 3,
+    //% block="最も近いプレイヤー@p"
+    p = 4,
+    //% block="ランダムなプレイヤー@r"
+    r = 5,
+    //% block="自分自身@s"
+    s = 6
 }
 
 //% weight=100 color=#0fbc11 icon="\uf1b3"
@@ -162,7 +162,37 @@ namespace Minecraftbit {
     //% blockId=run_mccommand block="⛏️マイクラコマンド実行 %ChoiceCommand | %options"
     //% weight=80
     export function Run_mccommand(choice: ChoiceCommand, options: string):void {
-        let command = "/" + choice + " " + options
+        let commandName
+        switch(choice) {
+            case ChoiceCommand.tp:
+                commandName = "tp"
+                break
+            case ChoiceCommand.give:
+                commandName = "give"
+                break
+            case ChoiceCommand.execute:
+                commandName = "execute"
+                break
+            case ChoiceCommand.summon:
+                commandName = "summon"
+                break
+            case ChoiceCommand.effect:
+                commandName = "effect"
+                break
+            case ChoiceCommand.fill:
+                commandName = "fill"
+                break
+            case ChoiceCommand.playsound:
+                commandName = "playsound"
+                break
+            case ChoiceCommand.weather:
+                commandName = "weather"
+                break
+            case ChoiceCommand.time:
+                commandName = "time"
+                break
+        }
+        let command = "/" + commandName + " " + options
         sendMCCommand(command)
     }
 
@@ -186,30 +216,21 @@ namespace Minecraftbit {
     //% weight=80
     //% draggableParameters
     export function setTarget(target: Target):string {
-        let targetStr: string = ""
         switch (target) {
             case Target.a:
-                targetStr = " @a "
-                return targetStr;
-                break
+                return " @a ";
             case Target.c:
-                targetStr = " @c "
-                return targetStr;
+                return " @c ";
             case Target.e:
-                targetStr = " @e "
-                return targetStr;
+                return " @e ";
             case Target.p:
-                targetStr = " @p "
-                return targetStr;
+                return " @p ";
             case Target.r:
-                targetStr = " @r "
-                return targetStr;
+                return " @r ";
             case Target.s:
-                targetStr = " @s "
-                return targetStr;
+                return " @s ";
             default:
-                targetStr = " @s "
-                return targetStr;
+                return " @s ";
         }
     }
 }
