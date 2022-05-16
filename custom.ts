@@ -250,6 +250,19 @@ namespace Minecraftbit {
     }
 
     /**
+     * Generate Relative coordinates
+     * @param ChoiceCommand options
+     */
+    //% blockId=makeMcComStr block="⛏️コマンド文字 %str"
+    //% weight=80
+    //% draggableParameters
+    export function makeMcString(str: string): string {
+        let mcStr = " " + str + " "
+        return mcStr
+    }
+
+
+    /**
      * Command Target
      * @param Target
      */
