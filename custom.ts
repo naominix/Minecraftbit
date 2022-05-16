@@ -274,4 +274,30 @@ namespace Minecraftbit {
                 return " @s ";
         }
     }
+
+    /**
+     * Command Target with type
+     * @param Target
+     */
+    //% blockId=TargetBlockType block="⛏️実行対象 %Target[type=%type]"
+    //% weight=80
+    //% draggableParameters
+    export function setTargetType(target: Target, type: string): string {
+        switch (target) {
+            case Target.a:
+                return " @a[type=" + type + "] ";
+            case Target.c:
+                return " @c[type=" + type + "] ";
+            case Target.e:
+                return " @e[type=" + type + "] ";
+            case Target.p:
+                return " @p[type=" + type + "] ";
+            case Target.r:
+                return " @r[type=" + type + "] ";
+            case Target.s:
+                return " @s[type=" + type + "] ";
+            default:
+                return " @s[type=" + type + "] ";
+        }
+    }
 }
