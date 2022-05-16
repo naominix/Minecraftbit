@@ -197,6 +197,47 @@ namespace Minecraftbit {
     }
 
     /**
+     * Run Minecraft Command.
+     * @param ChoiceCommand options
+     */
+    //% blockId=mccommandText block="⛏️マイクラコマンド文字列 %ChoiceCommand | %options"
+    //% weight=80
+    export function mccommandText(choice: ChoiceCommand, options: string): string {
+        let commandName
+        switch (choice) {
+            case ChoiceCommand.tp:
+                commandName = "tp"
+                break
+            case ChoiceCommand.give:
+                commandName = "give"
+                break
+            case ChoiceCommand.execute:
+                commandName = "execute"
+                break
+            case ChoiceCommand.summon:
+                commandName = "summon"
+                break
+            case ChoiceCommand.effect:
+                commandName = "effect"
+                break
+            case ChoiceCommand.fill:
+                commandName = "fill"
+                break
+            case ChoiceCommand.playsound:
+                commandName = "playsound"
+                break
+            case ChoiceCommand.weather:
+                commandName = "weather"
+                break
+            case ChoiceCommand.time:
+                commandName = "time"
+                break
+        }
+        let command = "/" + commandName + " " + options
+        return command
+    }
+
+    /**
      * Generate Relative coordinates
      * @param ChoiceCommand options
      */
