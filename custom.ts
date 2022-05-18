@@ -128,6 +128,13 @@ namespace Minecraftbit {
         })
     }
 
+    //% block block="⛏️プレイヤーがメッセージを受信したとき"
+    export function onMessage(cb: () => void): void {
+        control.onEvent(17, 22, function () {
+            cb()
+        })
+    }
+
     basic.forever(() => {
         recvTxt = serial.readString()
         switch (recvTxt) {
@@ -149,8 +156,11 @@ namespace Minecraftbit {
             case ' ':
                 control.raiseEvent(16, 22)
                 break;
+            case 'PlayerMessage':
+                control.raiseEvent(17, 22)
+                break;
             default:
-                console.log(recvTxt)
+                basic.showString(recvTxt)
         }
         basic.pause(5);
     })
