@@ -160,7 +160,6 @@ namespace Minecraftbit {
                 control.raiseEvent(17, 22)
                 break;
             default:
-                basic.showString(recvTxt)
         }
         basic.pause(5);
     })
