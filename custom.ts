@@ -150,7 +150,7 @@ namespace Minecraftbit {
                 control.raiseEvent(16, 22)
                 break;
             default:
-
+                console.log(recvTxt)
         }
         basic.pause(5);
     })
