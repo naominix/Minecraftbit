@@ -41,10 +41,26 @@ enum Target {
     s = 6
 }
 
+enum KeyMouseEvent {
+    //% block="マウス左ボタンクリック"
+    left = 1,
+    //% block="マウス右ボタンクリック"
+    right = 2,
+    //% block="キー[W]"
+    w = 3,
+    //% block="キー[A]"
+    a = 4,
+    //% block="キー[S]"
+    s = 5,
+    //% block="キー[D]"
+    d = 6
+}
+
 //% weight=100 color=#0fbc11 icon="\uf1b3"
 namespace Minecraftbit {
     let isConnected: boolean = false;
     let recvTxt = ""
+    let prefix = ":"
 
     /**
      * Connect Minecraft:bit via USB-Serial
@@ -65,7 +81,7 @@ namespace Minecraftbit {
     //% weight=100 blockGap=20
     //% command.defl="/tp ~~~"
     export function sendMCCommand(command: string): void {
-        serial.writeLine(command)
+        serial.writeLine(prefix + command)
     }
 
     /**
@@ -322,4 +338,37 @@ namespace Minecraftbit {
                 return " @s[type=" + type + "] ";
         }
     }
+
+    /**
+     * Send Minecraft KeyMouseEvent.
+     * @param KeyMouseEvent
+     */
+    //% blockId=send_mckmevent block="⛏️操作イベント送信 %KeyMouseEvent"
+    //% weight=80
+    export function send_mcKeyMouseEvent(kmEvent: KeyMouseEvent): void {
+        let commandName
+        switch (kmEvent) {
+            case KeyMouseEvent.left:
+                commandName = "l"
+                break
+            case KeyMouseEvent.right:
+                commandName = "r"
+                break
+            case KeyMouseEvent.w:
+                commandName = "w"
+                break
+            case KeyMouseEvent.a:
+                commandName = "a"
+                break
+            case KeyMouseEvent.s:
+                commandName = "s"
+                break
+            case KeyMouseEvent.d:
+                commandName = "d"
+                break
+        }
+        let command = commandName
+        sendMCCommand(command)
+    }
+
 }
