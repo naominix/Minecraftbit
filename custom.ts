@@ -391,4 +391,24 @@ namespace Minecraftbit {
         sendMCCommand(command)
     }
 
+    /**
+     * 
+     */
+    //% blockId="mcev_subsc" block="🔗プレイヤー歩行イベント有効"
+    //% weight=100 color=#000080 blockGap=20
+    export function subscribeEvent(): void {
+        sendMCCommand("T")
+    }
+
+
+    /**
+     * 
+     */
+    //% blockId="mcev_unsubsc" block="🔗プレイヤー歩行イベント無効"
+    //% weight=100 color=#000080 blockGap=20
+    export function unSubscribeEvent(): void {
+        sendMCCommand("t")
+    }
+
+
 }
