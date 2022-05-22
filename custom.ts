@@ -53,7 +53,15 @@ enum KeyMouseEvent {
     //% block="キー[S]"
     s = 5,
     //% block="キー[D]"
-    d = 6
+    d = 6,
+    //% block="マウス左ボタンDown"
+    L = 7,
+    //% block="マウス右ボタンDown"
+    R = 8,
+    //% block="マウス左ボタンUP"
+    j = 9,
+    //% block="マウス右ボタンUP"
+    k = 10,
 }
 
 //% weight=100 color=#0fbc11 icon="\uf1b3"
@@ -365,6 +373,18 @@ namespace Minecraftbit {
                 break
             case KeyMouseEvent.d:
                 commandName = "d"
+                break
+            case KeyMouseEvent.L:
+                commandName = "L"
+                break
+            case KeyMouseEvent.R:
+                commandName = "R"
+                break
+            case KeyMouseEvent.j:
+                commandName = "j"
+                break
+            case KeyMouseEvent.k:
+                commandName = "k"
                 break
         }
         let command = commandName
