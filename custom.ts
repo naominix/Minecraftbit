@@ -94,7 +94,7 @@ enum ChoiceEvent {
     //% block="テレポートした"
     teleported = 13,
     //% block="無効：テレポートした"
-    usteleported = 17,
+    usteleported = 17
 }
 
 //% weight=100 color=#0fbc11 icon="\uf1b3"
