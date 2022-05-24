@@ -69,32 +69,32 @@ enum ChoiceEvent {
     unsubsc = 0,
     //% block="プレイヤーが歩いた"
     ptravelled = 9,
-    //% block="無効：プレイヤーが歩いた"
-    usptravelled = 1,
+    // //% block="無効：プレイヤーが歩いた"
+    // usptravelled = 1,
     //% block="ブロックを置いた"
     blockplaced = 8,
-    //% block="無効：ブロックを置いた"
-    usblockplaced = 2,
+    // //% block="無効：ブロックを置いた"
+    // usblockplaced = 2,
     //% block="ブロックを壊した"
     blockbroken = 7,
-    //% block="無効：ブロックを壊した"
-    usblockbroken = 3,
+    // //% block="無効：ブロックを壊した"
+    // usblockbroken = 3,
     //% block="アイテムを使った"
     itemused = 6,
-    //% block="無効：アイテムを使った"
-    usitemused = 4,
+    // //% block="無効：アイテムを使った"
+    // usitemused = 4,
     //% block="アイテムを落とした"
     itemdropped = 11,
-    //% block="無効：アイテムを落とした"
-    usitemdropped = 19,
+    // //% block="無効：アイテムを落とした"
+    // usitemdropped = 19,
     //% block="メッセージを送信した"
     message = 12,
-    //% block="無効：メッセージを送信した"
-    usmessage = 18,
+    // //% block="無効：メッセージを送信した"
+    // usmessage = 18,
     //% block="テレポートした"
-    teleported = 13,
-    //% block="無効：テレポートした"
-    usteleported = 17
+    teleported = 13
+    // //% block="無効：テレポートした"
+    // usteleported = 17
 }
 
 //% weight=100 color=#0fbc11 icon="\uf1b3"
@@ -438,45 +438,45 @@ namespace Minecraftbit {
             case ChoiceEvent.ptravelled:
                 commandName = "9"
                 break
-            case ChoiceEvent.usptravelled:
-                commandName = "1"
-                break
+            // case ChoiceEvent.usptravelled:
+            //     commandName = "1"
+            //     break
             case ChoiceEvent.blockplaced:
                 commandName = "8"
                 break
-            case ChoiceEvent.usblockplaced:
-                commandName = "2"
-                break
+            // case ChoiceEvent.usblockplaced:
+            //     commandName = "2"
+            //     break
             case ChoiceEvent.blockbroken:
                 commandName = "7"
                 break
-            case ChoiceEvent.usblockbroken:
-                commandName = "3"
-                break
+            // case ChoiceEvent.usblockbroken:
+            //     commandName = "3"
+            //     break
             case ChoiceEvent.itemused:
                 commandName = "6"
                 break
-            case ChoiceEvent.usitemused:
-                commandName = "4"
-                break
+            // case ChoiceEvent.usitemused:
+            //     commandName = "4"
+            //     break
             case ChoiceEvent.itemdropped:
                 commandName = "("
                 break
-            case ChoiceEvent.usitemdropped:
-                commandName = ")"
-                break
+            // case ChoiceEvent.usitemdropped:
+            //     commandName = ")"
+            //     break
             case ChoiceEvent.message:
                 commandName = "["
                 break
-            case ChoiceEvent.usmessage:
-                commandName = "]"
-                break
+            // case ChoiceEvent.usmessage:
+            //     commandName = "]"
+            //     break
             case ChoiceEvent.teleported:
                 commandName = "{"
                 break
-            case ChoiceEvent.usteleported:
-                commandName = "}"
-                break
+            // case ChoiceEvent.usteleported:
+            //     commandName = "}"
+            //     break
         }
         sendMCCommand(commandName)
     }
