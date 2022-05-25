@@ -98,6 +98,7 @@ enum ChoiceEvent {
 }
 
 //% weight=100 color=#0fbc11 icon="\uf1b3"
+//% groups='["Connect","Event","Command"]'
 namespace Minecraftbit {
     let isConnected: boolean = false;
     let recvTxt = ""
@@ -108,6 +109,7 @@ namespace Minecraftbit {
      */
     //% blockId="mcbit_connect" block="🔗Minecraft:bitに接続"
     //% weight=100 color=#000080 blockGap=20
+    //% group="Connect"
     export function connect(): void {
         serial.redirectToUSB()
         isConnected = true
@@ -121,6 +123,7 @@ namespace Minecraftbit {
     //% blockId="serial_write" block="⛏️マイクラコマンド %command を送信"
     //% weight=100 blockGap=20
     //% command.defl="/tp ~~~"
+    //% group="Command"
     export function sendMCCommand(command: string): void {
         serial.writeLine(prefix + command)
     }
@@ -132,6 +135,7 @@ namespace Minecraftbit {
     //% weight=50
     //% block="⛏️ブロックを壊したとき"
     //% draggableParameters
+    //% group="Event"
     export function onBlockBroken(cb: () => void) {
         control.onEvent(11, 22, function () {
             cb()
@@ -145,6 +149,7 @@ namespace Minecraftbit {
     //% weight=50
     //% block="⛏️ブロックを置いたとき"
     //% draggableParameters
+    //% group="Event"
     export function onBlockPlaced(cb: () => void) {
         control.onEvent(12, 22, function () {
             cb()
@@ -158,6 +163,7 @@ namespace Minecraftbit {
     //% weight=50
     //% block="⛏️アイテムを捨てたとき"
     //% draggableParameters
+    //% group="Event"
     export function onItemDropped(cb: () => void) {
         control.onEvent(13, 22, function () {
             cb()
@@ -165,6 +171,7 @@ namespace Minecraftbit {
     }
 
     //% block block="⛏️アイテムを使ったとき"
+    //% group="Event"
     export function onItemUsed(cb: () => void): void {
         control.onEvent(14, 22, function () {
             cb()
@@ -172,6 +179,7 @@ namespace Minecraftbit {
     }
 
     //% block block="⛏️プレイヤーがテレポートしたとき"
+    //% group="Event"
     export function onTeleported(cb: () => void): void {
         control.onEvent(15, 22, function () {
             cb()
@@ -179,6 +187,7 @@ namespace Minecraftbit {
     }
 
     //% block block="⛏️プレイヤーが歩いたとき"
+    //% group="Event"
     export function onTravelled(cb: () => void): void {
         control.onEvent(16, 22, function () {
             cb()
@@ -186,6 +195,7 @@ namespace Minecraftbit {
     }
 
     //% block block="⛏️プレイヤーがメッセージを受信したとき"
+    //% group="Event"
     export function onMessage(cb: () => void): void {
         control.onEvent(17, 22, function () {
             cb()
@@ -227,6 +237,7 @@ namespace Minecraftbit {
      */
     //% blockId=run_mccommand block="⛏️マイクラコマンド実行 %ChoiceCommand | %options"
     //% weight=80
+    //% group="Command"
     export function Run_mccommand(choice: ChoiceCommand, options: string):void {
         let commandName
         switch(choice) {
@@ -268,6 +279,7 @@ namespace Minecraftbit {
      */
     //% blockId=mccommandText block="⛏️マイクラコマンド文字列 %ChoiceCommand | %options"
     //% weight=80
+    //% group="Command"
     export function mccommandText(choice: ChoiceCommand, options: string): string {
         let commandName
         switch (choice) {
@@ -310,6 +322,7 @@ namespace Minecraftbit {
     //% blockId=Rcoordinates block="⛏️相対座標 ~%rx | ~%ry | ~%rz"
     //% weight=80
     //% draggableParameters
+    //% group="Command"
     export function setRXYZ(rx: number, ry: number, rz: number):string {
         let RXYZ = "~" + rx + " " + "~" + ry + " " + "~" + rz + " "
         return RXYZ
@@ -322,6 +335,7 @@ namespace Minecraftbit {
     //% blockId=makeMcComStr block="⛏️コマンド文字 %str"
     //% weight=80
     //% draggableParameters
+    //% group="Command"
     export function makeMcString(str: string): string {
         let mcStr = " " + str + " "
         return mcStr
@@ -335,6 +349,7 @@ namespace Minecraftbit {
     //% blockId=TargetBlock block="⛏️実行対象 %Target"
     //% weight=80
     //% draggableParameters
+    //% group="Command"
     export function setTarget(target: Target):string {
         switch (target) {
             case Target.a:
@@ -361,6 +376,7 @@ namespace Minecraftbit {
     //% blockId=TargetBlockType block="⛏️実行対象 %Target[type=%type]"
     //% weight=80
     //% draggableParameters
+    //% group="Command"
     export function setTargetType(target: Target, type: string): string {
         switch (target) {
             case Target.a:
@@ -386,6 +402,7 @@ namespace Minecraftbit {
      */
     //% blockId=send_mckmevent block="⛏️操作イベント送信 %KeyMouseEvent"
     //% weight=80
+    //% group="Event"
     export function send_mcKeyMouseEvent(kmEvent: KeyMouseEvent): void {
         let commandName
         switch (kmEvent) {
@@ -429,6 +446,7 @@ namespace Minecraftbit {
      */
     //% blockId="mcev_choice" block="⛏️イベント選択 %ChoiceEvent"
     //% weight=100 color=#000080 blockGap=20
+    //% group="Event"
     export function choiceEvent(cEvent: ChoiceEvent): void {
         let commandName
         switch (cEvent) {
