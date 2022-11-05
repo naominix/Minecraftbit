@@ -113,7 +113,7 @@ namespace Minecraftbit {
     export function connect(): void {
         serial.redirectToUSB()
         isConnected = true
-        serial.setBaudRate(BaudRate.BaudRate115200)
+        serial.setBaudRate(BaudRate.BaudRate9600)
         basic.pause(100)
     }
 
