@@ -403,6 +403,7 @@ namespace Minecraftbit {
     //% blockId=send_mckmevent block="⛏️操作イベント送信 %KeyMouseEvent"
     //% weight=80
     //% group="Event"
+    /**
     export function send_mcKeyMouseEvent(kmEvent: KeyMouseEvent): void {
         let commandName
         switch (kmEvent) {
@@ -440,6 +441,7 @@ namespace Minecraftbit {
         let command = commandName
         sendMCCommand(command)
     }
+     */
 
     /**
      * 
