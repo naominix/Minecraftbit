@@ -126,6 +126,7 @@ namespace Minecraftbit {
     //% group="Command"
     export function sendMCCommand(command: string): void {
         serial.writeLine(prefix + command)
+        basic.pause(100)
     }
 
     /**
