@@ -275,6 +275,18 @@ namespace Minecraftbit {
     }
 
     /**
+     * Gathering Minecraft Entity.
+     * @param void
+     */
+    //% blockId=gatheringEntity block="⛏️エンティティ全員集合"
+    //% weight=80
+    //% group="Command"
+    export function gatheringEntity(): void {
+        let command = "/tp @e @s"
+        sendMCCommand(command)
+    }
+
+    /**
      * Run Minecraft Command.
      * @param ChoiceCommand options
      */
