@@ -101,7 +101,6 @@ enum ChoiceEvent {
 //% groups='["Connect","Event","Command"]'
 namespace Minecraftbit {
     let isConnected: boolean = false;
-    let recvTxt = ""
     let prefix = ":"
 
     /**
@@ -113,7 +112,11 @@ namespace Minecraftbit {
     export function connect(): void {
         serial.redirectToUSB()
         isConnected = true
-        serial.setBaudRate(BaudRate.BaudRate9600)
+        // Baud rate must match the PC side (mcwss-microbit opens the
+        // port at 115200). It used to be 9600 here, which only worked
+        // because USB CDC largely ignores the setting.
+        serial.setBaudRate(BaudRate.BaudRate115200)
+        serial.setRxBufferSize(128)
         basic.pause(100)
     }
 
@@ -203,9 +206,20 @@ namespace Minecraftbit {
         })
     }
 
-    basic.forever(() => {
-        recvTxt = serial.readString()
-        switch (recvTxt) {
+    // Notifications from the PC arrive as newline-terminated lines
+    // (the PC side terminates every message since its phase 1
+    // hardening). Read one line per notification and dispatch on an
+    // exact match. The previous implementation compared the whole
+    // receive buffer via serial.readString(), so a trailing newline
+    // or two notifications arriving together never matched and the
+    // events were silently lost.
+    serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
+        let line = serial.readLine()
+        // Strip trailing CR/LF in case the line reader keeps them.
+        while (line.length > 0 && (line.charAt(line.length - 1) == "\n" || line.charAt(line.length - 1) == "\r")) {
+            line = line.substr(0, line.length - 1)
+        }
+        switch (line) {
             case 'BlockBroken':
                 control.raiseEvent(11, 22)
                 break;
@@ -229,7 +243,6 @@ namespace Minecraftbit {
                 break;
             default:
         }
-        basic.pause(5);
     })
 
     /**
